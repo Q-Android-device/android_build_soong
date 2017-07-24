@@ -127,12 +127,17 @@ type variableProperties struct {
 			Srcs         []string
 		}
 
-		// include Lineage variables
-		Lineage android.Product_variables
+		Has_legacy_camera_hal1 struct {
+			Cflags []string
+                        Shared_libs  []string
+                }
 
 		Target_shim_libs struct {
 			Cppflags []string
 		}
+
+                // include Lineage variables
+                Lineage android.Product_variables
 
 	} `android:"arch_variant"`
 }
@@ -298,10 +303,12 @@ type productVariables struct {
 
 	TargetFSConfigGen []string `json:",omitempty"`
 
-	// include Lineage variables
-	Lineage android.ProductVariables
+	Has_legacy_camera_hal1 *bool `json:",omitempty"`
 
 	Target_shim_libs *string `json:",omitempty"`
+
+        // include Lineage variables
+        Lineage android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
